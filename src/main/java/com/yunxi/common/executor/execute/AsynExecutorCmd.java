@@ -1,52 +1,55 @@
-package com.yunxi.common.executor.database;
+package com.yunxi.common.executor.execute;
 
 import java.util.Date;
 
 /**
- * 执行器命令实体
+ * 执行器命令
  * @author <a href="mailto:leukony@yeah.net">leukony</a>
- * @version $Id: AsynExecutorCmdDO.java, v 0.1 2019年1月9日 下午1:49:42 leukony Exp $
+ * @version $Id: AsynExecutorCmd.java, v 0.1 2019年1月9日 上午10:42:17 leukony Exp $
  */
-public class AsynExecutorCmdDO {
+public abstract class AsynExecutorCmd {
 
     /** 命令主键 */
-    private Long   id;
+    private Long                  id;
 
     /** 命令编号 */
-    private String cmdNo;
+    private String                cmdNo;
 
     /** 命令类型 */
-    private String cmdType;
+    private String                cmdType;
 
     /** 命令trace */
-    private String cmdTrace;
+    private String                cmdTrace;
 
     /** 命令状态 */
-    private String status;
+    private AsynExecutorCmdStatus status;
 
     /** 命令重试次数 */
-    private int    executeTimes;
+    private int                   executeTimes;
 
     /** 命令下次执行时间 */
-    private Date   nextExecuteTime;
+    private Date                  nextExecuteTime;
 
     /** 命令上下文 */
-    private String context;
+    private String                context;
 
     /** 命令生成集群 */
-    private String group;
+    private String                group;
 
     /** 命令生成主机 */
-    private String hostname;
+    private String                hostname;
 
-    /** 命令创建时间 */
-    private Date   gmtCreate;
+    /**
+     * 将属性转换成Context
+     */
+    protected void covAttrToContext() {
+    }
 
-    /** 命令最后修改时间 */
-    private Date   gmtModify;
-
-    /** 命令表前缀 */
-    private String tableNamePrefix;
+    /**
+     * 将Context转换成属性
+     */
+    protected void covContextToAttr() {
+    }
 
     /**
       * Getter method for property <tt>id</tt>.
@@ -125,7 +128,7 @@ public class AsynExecutorCmdDO {
       * 
       * @return property value of status
       */
-    public String getStatus() {
+    public AsynExecutorCmdStatus getStatus() {
         return status;
     }
 
@@ -134,7 +137,7 @@ public class AsynExecutorCmdDO {
       * 
       * @param status value to be assigned to property status
       */
-    public void setStatus(String status) {
+    public void setStatus(AsynExecutorCmdStatus status) {
         this.status = status;
     }
 
@@ -226,59 +229,5 @@ public class AsynExecutorCmdDO {
       */
     public void setHostname(String hostname) {
         this.hostname = hostname;
-    }
-
-    /**
-      * Getter method for property <tt>gmtCreate</tt>.
-      * 
-      * @return property value of gmtCreate
-      */
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
-
-    /**
-      * Setter method for property <tt>gmtCreate</tt>.
-      * 
-      * @param gmtCreate value to be assigned to property gmtCreate
-      */
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    /**
-      * Getter method for property <tt>gmtModify</tt>.
-      * 
-      * @return property value of gmtModify
-      */
-    public Date getGmtModify() {
-        return gmtModify;
-    }
-
-    /**
-      * Setter method for property <tt>gmtModify</tt>.
-      * 
-      * @param gmtModify value to be assigned to property gmtModify
-      */
-    public void setGmtModify(Date gmtModify) {
-        this.gmtModify = gmtModify;
-    }
-
-    /**
-      * Getter method for property <tt>tableNamePrefix</tt>.
-      * 
-      * @return property value of tableNamePrefix
-      */
-    public String getTableNamePrefix() {
-        return tableNamePrefix;
-    }
-
-    /**
-      * Setter method for property <tt>tableNamePrefix</tt>.
-      * 
-      * @param tableNamePrefix value to be assigned to property tableNamePrefix
-      */
-    public void setTableNamePrefix(String tableNamePrefix) {
-        this.tableNamePrefix = tableNamePrefix;
     }
 }
