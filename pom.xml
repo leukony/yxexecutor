@@ -11,6 +11,11 @@
 		<!-- ================================================= -->
       	<!-- YXSpring Dependency -->
      	<!-- ================================================= -->
+     	<dependency>
+			<groupId>com.yunxi.common</groupId>
+			<artifactId>yx-common-schedule</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.yunxi.common</groupId>
 			<artifactId>yx-common-tracer</artifactId>
